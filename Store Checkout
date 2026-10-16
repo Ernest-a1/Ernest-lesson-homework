@@ -1,0 +1,206 @@
+import java.util.Scanner;
+
+public class cw1410 {
+
+    public static void main(String[] args) {
+        Scanner s1 = new Scanner(System.in);
+
+        int a = 5;
+        int m =20;
+        int k =40;
+        int h = 50;
+        int l = 30;
+        int af=0;     // all items
+        int ct=0;
+        int d=0, fd=0;
+        int qm=0, qk=0, qh=0, ql=0;
+
+        do {
+            System.out.println(" ");
+            System.out.println("===== SIMPLE STORE =====");
+            System.out.println("1. Mouse         - $20");
+            System.out.println("2. Keyboard      - $40");
+            System.out.println("3. Headphones    - $50");
+            System.out.println("4. Laptop Stand  - $30");
+            System.out.println("5. Checkout");
+            System.out.println(" ");
+            System.out.print("Choose a product: ");
+            int o = s1.nextInt();
+
+            if (o == 1) {
+                System.out.println(" ");
+                System.out.println("You selected: Mouse");
+                System.out.println("Price: 20$");
+                System.out.print("Enter quantity: ");
+                int q = s1.nextInt();
+                if(q>0){
+                    af += q;
+                    qm += q;
+                    ct += m*q;
+                    System.out.println(" ");
+                    System.out.println("Added to cart!");
+                    System.out.println("Current total: $" + ct);
+                }
+
+                else{
+                    System.out.println("Invalid quantity.");
+                    System.out.println("Quantity must be greater than 0.");
+                }
+            }
+            else if (o == 2) {
+                System.out.println(" ");
+                System.out.println("You selected: Keyboard");
+                System.out.println("Price: 40$");
+                System.out.print("Enter quantity: ");
+                int q = s1.nextInt();
+                if(q>0){
+                    af += q;
+                    qk += q;
+                    ct += k * q;
+                    System.out.println(" ");
+                    System.out.println("Added to cart!");
+                    System.out.println("Current total: $" + ct);
+                }
+                else{
+                    System.out.println("Invalid quantity.");
+                    System.out.println("Quantity must be greater than 0.");
+                }
+            }
+            else if(o==3){
+                System.out.println(" ");
+                System.out.println("You selected: Headphones");
+                System.out.println("Price: 50$");
+                System.out.print("Enter quantity: ");
+                int q = s1.nextInt();
+                if(q>0){
+                    af+=q;
+                    qh+=q;
+                    ct+=h*q;
+                    System.out.println(" ");
+                    System.out.println("Added to cart!");
+                    System.out.println("Current total: $" + ct);
+                }
+
+                else{
+                    System.out.println("Invalid quantity.");
+                    System.out.println("Quantity must be greater than 0.");
+                }
+            }
+            else if(o==4){
+                System.out.println(" ");
+                System.out.println("You selected: Laptop Stand");
+                System.out.println("Price: 30$");
+                System.out.print("Enter quantity: ");
+                int q = s1.nextInt();
+                if(q>0){
+                    af+=q;
+                    ql+=q;
+                    ct+=q*l;
+                    System.out.println(" ");
+                    System.out.println("Added to cart!");
+                    System.out.println("Current total: $" + ct);
+                }
+
+                else{
+                    System.out.println("Invalid quantity.");
+                    System.out.println("Quantity must be greater than 0.");
+                }
+            }
+            else if(o==5){
+                a-=o;
+            }
+            else{
+                System.out.println("Invalid option.");
+                System.out.println("Please choose a number from 1 to 5.");
+            }
+        }while(a != 0);
+
+        if(ct>=100 && ct<200){
+            d+=(0.1*ct);
+            fd+=10;
+        }
+        else if(ct>=200){
+            d+=(0.15*ct);
+            fd+=15;
+        }
+        int bd=0;
+
+        if(qk>=5){
+            bd+=(qk*k*0.05);
+        }if(qm>=5){
+            bd+=(0.05*qm*m);
+        } if(qh>=5){
+            bd+=(0.05*qh*h);
+        } if(ql>=5){
+            bd+=(0.05*ql*l);
+        }
+        int ft =(ct-d-bd);
+
+        System.out.println("===== CHECKOUT =====");
+        System.out.println("Items purchased: " + af);
+        System.out.println("Subtotal: $" + ct);
+        System.out.println("===== ITEMS PURCHASED =====");
+        System.out.println("Mouse:                     " +qm);
+        System.out.println("Keyboard:                  " +qk);
+        System.out.println("Headphones:                " +qh);
+        System.out.println("Laptop Stand:              " +ql);
+
+        if (qm > qk && qm > qh && qm>ql) {
+            System.out.println("Most purchased product: Mouse ");
+            System.out.println("quantity: " +qm);
+        } else if (qk > qm && qk > qh && qk>ql) {
+            System.out.println("Most purchased product: Keyboard");
+            System.out.println("quantity: " +qk);
+        } else if (qh >qm && qh > qk && qh>ql) {
+            System.out.println("Most purchased product: Headphones");
+            System.out.println("quantity: " +qh);
+        }else {
+            System.out.println("Most purchased product: Laptop Stand");
+            System.out.println("quantity: " +ql);
+        }
+
+        System.out.println(" ");
+        System.out.println("Discount: $" + d);
+        System.out.println("Your BONUS DISCOUNT is: " + bd + "$");
+        System.out.println("Final total: $" + ft);
+        System.out.println(" ");
+        int ch = 0;
+        int p = 0;
+        int w = 1;
+        while (w!=0){
+            System.out.print("Enter payment amount: ");
+            int p1 = s1.nextInt();
+            if(ft>p1){
+                System.out.println(" ");
+                System.out.println("Insufficient payment.");
+                System.out.println("You still need to pay: $" + (ft - p1));
+            }
+            else{
+                System.out.println("Payment successful!");
+                p+=p1;
+                ch+=(p1-ft);
+                System.out.println("Change: $" + ch);
+                w--;
+            }
+        }
+        System.out.println("========================");
+        System.out.println(" SIMPLE STORE");
+        System.out.println("========================");
+        System.out.println(" ");
+        System.out.println("Items purchased:        " + af);
+        System.out.println("Subtotal:               $" + ct);
+        System.out.println("Discount:               $" + d);
+        System.out.println("Your BONUS DISCOUNT is: $" + bd);
+        System.out.println("Final total:            $" + ft);
+        System.out.println("Payment:                $" + p);
+        System.out.println("Change:                 $" + ch);
+        System.out.println(" ");
+        if(af>10){
+            System.out.println("You earned a $10 coupon for your next visit!");
+        }
+        System.out.println(" ");
+        System.out.println("========================");
+        System.out.println("Thank you for shopping!");
+        System.out.println("========================");
+    }
+}
