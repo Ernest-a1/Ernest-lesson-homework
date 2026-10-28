@@ -1,0 +1,94 @@
+import java.util.Scanner;
+public class NumberPatternGenerator {
+    public static int p1(int a){
+        for(int i=1; i<=a; i++){
+            for(int j=1; j<=i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        return a;
+    }
+    public static int p2(int a){
+        for(int i=1; i<=a; i++){
+            for(int j=i; j<=a; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        return a;
+    }
+    public static int p3(int a){
+        for(int i=1; i<=a; i++){
+            for(int j=i; j<=a; j++) {
+                System.out.print("  ");
+            }
+            for(int j=1; j<i; j++) {
+                System.out.print("* ");
+            }
+            for(int j=1; j<=i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+
+        }
+        return a;
+    }
+    public static int p4(int a){
+
+        for(int i=1; i<=a; i++){
+            for(int j=1; j<=i; j++) {
+                System.out.print("  ");
+            }
+            for(int j=i; j<a; j++) {
+                System.out.print("* ");
+            }
+            for(int j=i; j<=a; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        return a;
+    }
+    public static void main(String[] args) {
+        Scanner s1 = new Scanner(System.in);
+        int k=1;
+        do{
+            System.out.println("Enter the number of rows: ");
+            int n = s1.nextInt();
+            System.out.println("Choose the pattern type:");
+            System.out.println("1 - Right Triangle");
+            System.out.println("2 - Inverted Right Triangle");
+            System.out.println("3 - Pyramid");
+            System.out.println("4 - Inverted Pyramid");
+            System.out.println("5 - Finish");
+            System.out.print("Your choice: ");
+            int p = s1.nextInt();
+            if(p==1){
+                System.out.println("Size: "+ n);
+                System.out.println(" Pattern: Right Triangle");
+                p1(n);
+            } else if(p==2){
+                System.out.println("Size: "+ n);
+                System.out.println(" Pattern: Right Triangle");
+                p2(n);
+            } else if(p==3){
+                System.out.println("Size: "+ n);
+                System.out.println(" Pattern: Right Triangle");
+                p3(n);
+            } else if(p==4){
+                System.out.println("Size: "+ n);
+                System.out.println(" Pattern: Right Triangle");
+                p4(n);
+            }
+            else if(p==5){
+                k--;
+            }
+            else{
+                System.out.println("Invalid option.");
+                System.out.println("Please choose a number from 1 to 5.");
+            }
+
+        }while (k!=0);
+    }
+}
